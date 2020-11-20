@@ -19,7 +19,7 @@
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <upstream.version>3.0.1</upstream.version>
-        <upstream.url>https://github.com/usablica/intro.js/archive/v${upstream.version}.zip</upstream.url>
+        <upstream.url>https://registry.npmjs.org/intro.js/-/${project.artifactId}-${project.version}.tgz</upstream.url>
         <destDir>${project.build.outputDirectory}/META-INF/resources/webjars/${project.artifactId}/${project.version}</destDir>
         <requirejs>
             {
@@ -67,9 +67,9 @@
                             <target>
                                 <mkdir dir="${destDir}" />
                                 <echo message="download archive" />
-                                <get src="${upstream.url}" dest="${project.build.directory}/${project.artifactId}.zip" />
+                                <get src="${upstream.url}" dest="${project.build.directory}/${project.artifactId}.tgz" />
                                 <echo message="unzip archive" />
-                                <unzip src="${project.build.directory}/${project.artifactId}.zip" dest="${project.build.directory}/${project.artifactId}-${version}" />
+                                <untar src="${project.build.directory}/${project.artifactId}.tgz" compression="gzip" dest="${project.build.directory}/${project.artifactId}-${version}" />
                                 <echo message="moving resources" />
                                 <move todir="${destDir}">
                                     <fileset dir="${project.build.directory}/${project.artifactId}-${version}" />
