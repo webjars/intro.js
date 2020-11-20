@@ -11,7 +11,7 @@
     <packaging>jar</packaging>
     <groupId>org.webjars</groupId>
     <artifactId>intro.js</artifactId>
-    <version>3.0.1-SNAPSHOT</version>
+    <version>3.0.1</version>
     <name>Intro.js</name>
     <description>WebJar for Intro.js</description>
     <url>http://webjars.org</url>
@@ -50,7 +50,7 @@
         <url>http://github.com/webjars/intro.js</url>
         <connection>scm:git:https://github.com/webjars/intro.js.git</connection>
         <developerConnection>scm:git:https://github.com/webjars/intro.js.git</developerConnection>
-        <tag>HEAD</tag>
+        <tag>intro.js-3.0.1</tag>
     </scm>
     
     <build>
