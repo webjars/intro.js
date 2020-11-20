@@ -11,15 +11,15 @@
     <packaging>jar</packaging>
     <groupId>org.webjars</groupId>
     <artifactId>intro.js</artifactId>
-    <version>1.0.1-SNAPSHOT</version>
+    <version>3.0.1-SNAPSHOT</version>
     <name>Intro.js</name>
     <description>WebJar for Intro.js</description>
     <url>http://webjars.org</url>
 
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-        <upstream.version>1.0.0</upstream.version>
-        <upstream.url>https://raw.githubusercontent.com/usablica/intro.js/v${upstream.version}</upstream.url>
+        <upstream.version>3.0.1</upstream.version>
+        <upstream.url>https://registry.npmjs.org/intro.js/-/${project.artifactId}-${project.version}.tgz</upstream.url>
         <destDir>${project.build.outputDirectory}/META-INF/resources/webjars/${project.artifactId}/${project.version}</destDir>
         <requirejs>
             {
@@ -66,12 +66,14 @@
                         <configuration>
                             <target>
                                 <mkdir dir="${destDir}" />
-                                <get src="${upstream.url}/intro.js" dest="${destDir}" />
-                                <get src="${upstream.url}/introjs-rtl.css" dest="${destDir}" />
-                                <get src="${upstream.url}/introjs.css" dest="${destDir}" />
-                                <get src="${upstream.url}/minified/intro.min.js" dest="${destDir}" />
-                                <get src="${upstream.url}/minified/introjs-rtl.min.css" dest="${destDir}" />
-                                <get src="${upstream.url}/minified/introjs.min.css" dest="${destDir}" />
+                                <echo message="download archive" />
+                                <get src="${upstream.url}" dest="${project.build.directory}/${project.artifactId}.tgz" />
+                                <echo message="unzip archive" />
+                                <untar src="${project.build.directory}/${project.artifactId}.tgz" compression="gzip" dest="${project.build.directory}/${project.artifactId}-${version}" />
+                                <echo message="moving resources" />
+                                <move todir="${destDir}">
+                                    <fileset dir="${project.build.directory}/${project.artifactId}-${version}" />
+                                </move>
                             </target>
                         </configuration>
                     </execution>
